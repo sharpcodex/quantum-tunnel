@@ -10,9 +10,41 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{37F5D47A-4799-4149-8B7D-78831B5BE4E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E05DD432-0AFC-4DEE-8F66-E92103FC7074}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumTunnel.Server.SignalR", "QuantumTunnel.Server.SignalR\QuantumTunnel.Server.SignalR.csproj", "{CBCE306C-1D7E-4C6D-B32B-6E8DB3C4046F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumTunnel.Client.JS", "QuantumTunnel.Client.JS\QuantumTunnel.Client.JS.csproj", "{BD0BEAA2-27C3-4D36-A3B3-2EAE65A5F469}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "QuantumTunnel.Server.NodeJS", "QuantumTunnel.Server.NodeJS\QuantumTunnel.Server.NodeJS.njsproj", "{991BF19D-5EDF-4C8B-A128-D02A855459BA}"
 EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBCE306C-1D7E-4C6D-B32B-6E8DB3C4046F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCE306C-1D7E-4C6D-B32B-6E8DB3C4046F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCE306C-1D7E-4C6D-B32B-6E8DB3C4046F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCE306C-1D7E-4C6D-B32B-6E8DB3C4046F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD0BEAA2-27C3-4D36-A3B3-2EAE65A5F469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD0BEAA2-27C3-4D36-A3B3-2EAE65A5F469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD0BEAA2-27C3-4D36-A3B3-2EAE65A5F469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD0BEAA2-27C3-4D36-A3B3-2EAE65A5F469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{991BF19D-5EDF-4C8B-A128-D02A855459BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{991BF19D-5EDF-4C8B-A128-D02A855459BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{991BF19D-5EDF-4C8B-A128-D02A855459BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{991BF19D-5EDF-4C8B-A128-D02A855459BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBCE306C-1D7E-4C6D-B32B-6E8DB3C4046F} = {226AF541-D716-44F6-8F54-CD15EA8192FE}
+		{BD0BEAA2-27C3-4D36-A3B3-2EAE65A5F469} = {226AF541-D716-44F6-8F54-CD15EA8192FE}
+		{991BF19D-5EDF-4C8B-A128-D02A855459BA} = {226AF541-D716-44F6-8F54-CD15EA8192FE}
 	EndGlobalSection
 EndGlobal
