@@ -20,6 +20,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumTunnel.Client.JS", "
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "QuantumTunnel.Server.NodeJS", "QuantumTunnel.Server.NodeJS\QuantumTunnel.Server.NodeJS.njsproj", "{991BF19D-5EDF-4C8B-A128-D02A855459BA}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "QuantumTunnel.SampleProject", "QuantumTunnel.SampleProject\", "{AC6870AF-E480-42A4-B2C4-8F605D66F814}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_64180"
+		Debug.AspNetCompiler.PhysicalPath = "QuantumTunnel.SampleProject\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64180\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_64180"
+		Release.AspNetCompiler.PhysicalPath = "QuantumTunnel.SampleProject\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64180\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "64180"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +59,10 @@ Global
 		{991BF19D-5EDF-4C8B-A128-D02A855459BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{991BF19D-5EDF-4C8B-A128-D02A855459BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{991BF19D-5EDF-4C8B-A128-D02A855459BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6870AF-E480-42A4-B2C4-8F605D66F814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6870AF-E480-42A4-B2C4-8F605D66F814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6870AF-E480-42A4-B2C4-8F605D66F814}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6870AF-E480-42A4-B2C4-8F605D66F814}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +71,6 @@ Global
 		{CBCE306C-1D7E-4C6D-B32B-6E8DB3C4046F} = {226AF541-D716-44F6-8F54-CD15EA8192FE}
 		{BD0BEAA2-27C3-4D36-A3B3-2EAE65A5F469} = {226AF541-D716-44F6-8F54-CD15EA8192FE}
 		{991BF19D-5EDF-4C8B-A128-D02A855459BA} = {226AF541-D716-44F6-8F54-CD15EA8192FE}
+		{AC6870AF-E480-42A4-B2C4-8F605D66F814} = {37F5D47A-4799-4149-8B7D-78831B5BE4E5}
 	EndGlobalSection
 EndGlobal
