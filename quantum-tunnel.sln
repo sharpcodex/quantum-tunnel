@@ -38,6 +38,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "QuantumTunnel.SampleProject
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "64180"
+		SlnRelativePath = "QuantumTunnel.SampleProject\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
