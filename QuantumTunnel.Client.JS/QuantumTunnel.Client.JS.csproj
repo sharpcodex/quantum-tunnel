@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="QuantumTunnel.Config.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="QuantumTunnel.Core.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
