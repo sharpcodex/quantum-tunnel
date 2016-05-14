@@ -5,7 +5,12 @@
     qt.resources = {
         name: "Quantum Tunnel",
         shortName: "qt",
-        nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file."
+        nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file.",
+        coreInitialized: "QT Core initialized with configs ",
+        settingAttrConfig: "setting attr config  ",
+        invalidSyntax: "Invalid syntax when calling ",
+        unexposable: "QT can only expose named functions",
+        exposed: "function exposed successfully : "
     };
 
     //#endregion
@@ -47,6 +52,7 @@
     //#region init
 
     var qTag = $("script[quantum-tunnel]");
+    var listeners = [];
 
     //#endregion
 
@@ -61,6 +67,15 @@
         if (value === "true" || value === "false") return /^true$/i.test(value);
         if (!isNaN(value)) return parseFloat(value);
         return value;
+    }
+
+    function pushListener(name, func) {
+        if (typeof (name) !== "string" || name.length < 1 || typeof (func) !== "function") {
+            qt.logError(qt.resources.unexposable);
+        } else {
+            listeners.push({ name: name, func: func });
+            qt.logInternal(qt.resources.exposed + name);
+        }
     }
 
     //#endregion
@@ -109,15 +124,55 @@
         try {
             var key = getCamelCase(attrib.name);
             var value = parseAttribute(attrib.value);
-            qt.logInternal("setting attr config : " + key + " = " + value);
+            qt.logInternal(qt.resources.settingAttrConfig + key + " = " + value);
             qt.config[key] = value;
         } catch (e) {
-            qt.logError("setting attributes configs" + e);
+            qt.logError(qt.resources.settingAttrConfig + e);
         }
     });
 
     //#endregion
 
-    qt.logInternal("QT Core initialized with configs", qt.config);
+    //#region listeners
+
+    qt.expose = function (x, y) {
+
+        //expose(namedFunc)
+        if (typeof (x) === "function" && typeof (y) === "undefined") {
+            pushListener(x.name, x);
+        }
+            //expose(name,func)
+        else if (typeof (x) === "string" && typeof (y) === "function") {
+            pushListener(x, y);
+        }
+            //expose([func1,func2])
+        else if (Object.prototype.toString.call(x) === "[object Array]" && typeof (y) === "undefined") {
+            x.forEach(function (func) {
+                pushListener(func.name, func);
+            });
+        }
+            //expose({name1:func1,name2:func2})
+        else if (Object.prototype.toString.call(x) === "[object Object]" && typeof (y) === "undefined") {
+            Object.getOwnPropertyNames(x).forEach(function (name) {
+                pushListener(name, x[name]);
+            });
+        }
+            //expose(func1,func2,....)
+        else if (typeof (x) === "function" && typeof (y) === "function") {
+            for (var i = 0, j = arguments.length; i < j; i++) {
+                pushListener(arguments[i].name, arguments[i]);
+            }
+        }
+            //invalid Syntax
+        else {
+            qt.logError(qt.resources.invalidSyntax + "expose()");
+        }
+
+        return arguments;
+    };
+
+    //#endregion
+
+    qt.logInternal(qt.resources.coreInitialized, qt.config);
     return qt;
 }(QT || {}));
