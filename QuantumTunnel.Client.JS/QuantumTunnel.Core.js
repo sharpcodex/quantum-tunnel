@@ -1,6 +1,7 @@
 ﻿var QT = (function (qt) {
 
     //#region Dependencies check
+
     qt.resources = {
         nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file."
     };
@@ -17,17 +18,8 @@
         }
     };
 
-    function printError(err) {
-        if (console && console.error()) {
-            console.error("QT : ", err);
-        } else {
-            alert("QT error : ", err);
-        }
-    };
-
-    if (!window.jQuery) {
-        printError("Cannot start Quantum tunnel because jquery is not loaded");
-        return qt;
+    if (typeof ($) !== "function") {
+        throw new Error(qt.resources.nojQuery);
     }
 
     //#endregion
