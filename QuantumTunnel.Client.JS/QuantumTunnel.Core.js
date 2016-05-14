@@ -87,7 +87,7 @@
 
     //#endregion
 
-    qt.logInternal("QT initialized!");
+    qt.logInternal("QT Core initialized!");
     qt.logInternal(qt.config);
 
     return qt;
