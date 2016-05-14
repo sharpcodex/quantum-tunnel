@@ -150,39 +150,37 @@
 
     //#region listeners
 
-    qt.expose = function (x, y) {
+    qt.expose = function (x, y, z) {
 
-        //expose(namedFunc)
-        if (typeof (x) === "function" && typeof (y) === "undefined") {
-            addListener(x.name, x);
-        }
-            //expose(name,func)
-        else if (typeof (x) === "string" && typeof (y) === "function") {
+        if (typeof (x) === "string" && typeof (y) === "function" && typeof (z) === "undefined") {
             addListener(x, y);
-        }
-            //expose([func1,func2])
-        else if (Object.prototype.toString.call(x) === "[object Array]" && typeof (y) === "undefined") {
-            x.forEach(function (func) {
-                addListener(func.name, func);
-            });
-        }
-            //expose({name1:func1,name2:func2})
-        else if (Object.prototype.toString.call(x) === "[object Object]" && typeof (y) === "undefined") {
-            Object.getOwnPropertyNames(x).forEach(function (name) {
-                addListener(name, x[name]);
-            });
-        }
-            //expose(func1,func2,....)
-        else if (typeof (x) === "function" && typeof (y) === "function") {
-            for (var i = 0, j = arguments.length; i < j; i++) {
-                addListener(arguments[i].name, arguments[i]);
+        } else {
+            var param;
+            for (var i = 0; i < arguments.length; i++) {
+                param = arguments[i];
+                if (typeof (param) === "function") {
+                    addListener(param.name, param);
+                } else if (Object.prototype.toString.call(param) === "[object Array]") {
+                    param.forEach(function (element) {
+                        if (typeof (element) === "function") {
+                            addListener(element.name, element);
+                        } else {
+                            qt.logError(qt.resources.invalidSyntax + "expose()");
+                        }
+                    });
+                } else if (Object.prototype.toString.call(param) === "[object Object]") {
+                    Object.getOwnPropertyNames(param).forEach(function (name) {
+                        if (typeof (param[name]) === "function") {
+                            addListener(name, param[name]);
+                        } else {
+                            qt.logError(qt.resources.invalidSyntax + "expose()");
+                        }
+                    });
+                } else {
+                    qt.logError(qt.resources.invalidSyntax + "expose()");
+                }
             }
         }
-            //invalid Syntax
-        else {
-            qt.logError(qt.resources.invalidSyntax + "expose()");
-        }
-
         return arguments;
     };
 
@@ -193,7 +191,7 @@
             } else if (typeof (arguments[i]) === "string") {
                 removeListener(arguments[i]);
             } else if (Object.prototype.toString.call(arguments[i]) === "[object Object]") {
-                Object.getOwnPropertyNames(x).forEach(function (name) {
+                Object.getOwnPropertyNames(arguments[i]).forEach(function (name) {
                     removeListener(name);
                 });
             } else if (Object.prototype.toString.call(arguments[i]) === "[object Array]") {
