@@ -1,4 +1,5 @@
 ﻿var QT = (function (qt) {
+    "use strict";
 
     //#region resources
 
@@ -10,7 +11,10 @@
         settingAttrConfig: "setting attr config  ",
         invalidSyntax: "Invalid syntax when calling ",
         unexposable: "QT can only expose named functions",
-        exposed: "function exposed successfully : "
+        exposed: "function exposed successfully : ",
+        unExposed: "function unExposed successfully : ",
+        unExposeInvalidParams: "Calling unExpose() with invalid parameters",
+        unExposeUnExposed: "Can not unExpose an already unExposed function"
     };
 
     //#endregion
@@ -69,12 +73,23 @@
         return value;
     }
 
-    function pushListener(name, func) {
+    function addListener(name, func) {
         if (typeof (name) !== "string" || name.length < 1 || typeof (func) !== "function") {
             qt.logError(qt.resources.unexposable);
         } else {
             listeners.push({ name: name, func: func });
             qt.logInternal(qt.resources.exposed + name);
+        }
+    }
+
+    function removeListener(name) {
+        if (typeof (name) === "string") {
+            listeners = listeners.filter(function (el) {
+                return el.name !== name;
+            });
+            qt.logInternal(qt.resources.unExposed + name);
+        } else {
+            qt.logError(qt.resources.unExposeInvalidParams);
         }
     }
 
@@ -139,33 +154,61 @@
 
         //expose(namedFunc)
         if (typeof (x) === "function" && typeof (y) === "undefined") {
-            pushListener(x.name, x);
+            addListener(x.name, x);
         }
             //expose(name,func)
         else if (typeof (x) === "string" && typeof (y) === "function") {
-            pushListener(x, y);
+            addListener(x, y);
         }
             //expose([func1,func2])
         else if (Object.prototype.toString.call(x) === "[object Array]" && typeof (y) === "undefined") {
             x.forEach(function (func) {
-                pushListener(func.name, func);
+                addListener(func.name, func);
             });
         }
             //expose({name1:func1,name2:func2})
         else if (Object.prototype.toString.call(x) === "[object Object]" && typeof (y) === "undefined") {
             Object.getOwnPropertyNames(x).forEach(function (name) {
-                pushListener(name, x[name]);
+                addListener(name, x[name]);
             });
         }
             //expose(func1,func2,....)
         else if (typeof (x) === "function" && typeof (y) === "function") {
             for (var i = 0, j = arguments.length; i < j; i++) {
-                pushListener(arguments[i].name, arguments[i]);
+                addListener(arguments[i].name, arguments[i]);
             }
         }
             //invalid Syntax
         else {
             qt.logError(qt.resources.invalidSyntax + "expose()");
+        }
+
+        return arguments;
+    };
+
+    qt.unExpose = function () {
+        for (var i = 0; i < arguments.length; i++) {
+            if (typeof (arguments[i]) === "function") {
+                removeListener(arguments[i].name);
+            } else if (typeof (arguments[i]) === "string") {
+                removeListener(arguments[i]);
+            } else if (Object.prototype.toString.call(arguments[i]) === "[object Object]") {
+                Object.getOwnPropertyNames(x).forEach(function (name) {
+                    removeListener(name);
+                });
+            } else if (Object.prototype.toString.call(arguments[i]) === "[object Array]") {
+                x.forEach(function (element) {
+                    if (typeof (element) === "function") {
+                        removeListener(element.name);
+                    } else if (typeof (element) === "string") {
+                        removeListener(element);
+                    } else {
+                        qt.logError(qt.resources.invalidSyntax + "unExpose()");
+                    }
+                });
+            } else {
+                qt.logError(qt.resources.invalidSyntax + "unExpose()");
+            }
         }
 
         return arguments;

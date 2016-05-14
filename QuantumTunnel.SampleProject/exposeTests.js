@@ -29,6 +29,11 @@
     //qt.expose(funcArray);
 
     //qt.expose(funcObj);
+    //qt.expose(dox,doy,doz);
+
+
+
     qt.expose(dox,doy,doz);
+    qt.unExpose(dox,doy,doz);
 
 })(QT);
