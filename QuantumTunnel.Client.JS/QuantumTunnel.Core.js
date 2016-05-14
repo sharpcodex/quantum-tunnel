@@ -1,4 +1,4 @@
-﻿var QT = (function (qt) {
+﻿var QT = (function(qt) {
     "use strict";
 
     //#region resources
@@ -63,7 +63,7 @@
     //#region private helpers
 
     function getCamelCase(str) {
-        return str.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+        return str.replace(/-([a-z])/g, function(g) { return g[1].toUpperCase(); });
     }
 
     function parseAttribute(value) {
@@ -84,7 +84,7 @@
 
     function removeListener(name) {
         if (typeof (name) === "string") {
-            listeners = listeners.filter(function (el) {
+            listeners = listeners.filter(function(el) {
                 return el.name !== name;
             });
             qt.logInternal(qt.resources.unExposed + name);
@@ -97,23 +97,23 @@
 
     //#region public helpers
 
-    qt.logConnection = function (msg, data) {
+    qt.logConnection = function(msg, data) {
         if (qt.config.logConnectionEvents) printMessage(true, msg, data);
     };
 
-    qt.logInternal = function (msg, data) {
+    qt.logInternal = function(msg, data) {
         if (qt.config.logInternalEvents) printMessage(true, msg, data);
     };
 
-    qt.logBroadcasting = function (msg, data) {
+    qt.logBroadcasting = function(msg, data) {
         if (qt.config.logBroadcastingEvents) printMessage(true, msg, data);
     };
 
-    qt.logListening = function (msg, data) {
+    qt.logListening = function(msg, data) {
         if (qt.config.logListeningEvents) printMessage(true, msg, data);
     };
 
-    qt.logError = function (err, data) {
+    qt.logError = function(err, data) {
         if (qt.config.logErrors) printMessage(false, err, data);
     };
 
@@ -135,7 +135,7 @@
 
     //#region config setters
 
-    $.each(qTag.get(0).attributes, function (i, attrib) {
+    $.each(qTag.get(0).attributes, function(i, attrib) {
         try {
             var key = getCamelCase(attrib.name);
             var value = parseAttribute(attrib.value);
@@ -150,32 +150,34 @@
 
     //#region listeners
 
-    qt.expose = function (x, y, z) {
-
+    qt.expose = function(x, y, z) {
         if (typeof (x) === "string" && typeof (y) === "function" && typeof (z) === "undefined") {
             addListener(x, y);
         } else {
             var param;
-            for (var i = 0; i < arguments.length; i++) {
-                param = arguments[i];
+            for (var paramIndex = 0; paramIndex < arguments.length; paramIndex++) {
+                param = arguments[paramIndex];
                 if (typeof (param) === "function") {
                     addListener(param.name, param);
                 } else if (Object.prototype.toString.call(param) === "[object Array]") {
-                    param.forEach(function (element) {
+                    for (var elementIndex = 0; elementIndex < param.length; elementIndex++) {
+                        var element = param[elementIndex];
                         if (typeof (element) === "function") {
                             addListener(element.name, element);
                         } else {
                             qt.logError(qt.resources.invalidSyntax + "expose()");
                         }
-                    });
+                    }
                 } else if (Object.prototype.toString.call(param) === "[object Object]") {
-                    Object.getOwnPropertyNames(param).forEach(function (name) {
-                        if (typeof (param[name]) === "function") {
-                            addListener(name, param[name]);
+                    var objProps = Object.getOwnPropertyNames(param);
+                    for (var propIndex = 0; propIndex < objProps.length; propIndex++) {
+                        var propName = objProps[propIndex];
+                        if (typeof (param[propName]) === "function") {
+                            addListener(propName, param[propName]);
                         } else {
                             qt.logError(qt.resources.invalidSyntax + "expose()");
                         }
-                    });
+                    }
                 } else {
                     qt.logError(qt.resources.invalidSyntax + "expose()");
                 }
@@ -184,18 +186,18 @@
         return arguments;
     };
 
-    qt.unExpose = function () {
+    qt.unExpose = function() {
         for (var i = 0; i < arguments.length; i++) {
             if (typeof (arguments[i]) === "function") {
                 removeListener(arguments[i].name);
             } else if (typeof (arguments[i]) === "string") {
                 removeListener(arguments[i]);
             } else if (Object.prototype.toString.call(arguments[i]) === "[object Object]") {
-                Object.getOwnPropertyNames(arguments[i]).forEach(function (name) {
+                Object.getOwnPropertyNames(arguments[i]).forEach(function(name) {
                     removeListener(name);
                 });
             } else if (Object.prototype.toString.call(arguments[i]) === "[object Array]") {
-                x.forEach(function (element) {
+                x.forEach(function(element) {
                     if (typeof (element) === "function") {
                         removeListener(element.name);
                     } else if (typeof (element) === "string") {
@@ -212,6 +214,12 @@
         return arguments;
     };
 
+    qt.listExposed = function() {
+        qt.logInternal("Listing Exposed functions");
+        for (var i = 0; i < listeners.length; i++) {
+            qt.logInternal(listeners[i].name);
+        }
+    };
     //#endregion
 
     qt.logInternal(qt.resources.coreInitialized, qt.config);
