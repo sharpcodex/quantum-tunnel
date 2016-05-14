@@ -29,12 +29,19 @@
     //qt.expose(funcArray);
 
     //qt.expose(funcObj);
-    qt.expose(dox,doy,doz);
+    qt.expose(dox,doy);
 
 
     //qt.unExpose(funcObj);
     //qt.listExposed();
 
-    qt.listExposed();
+
+    //qt.listExposed(true);
+
+
+
+    console.log(qt.isExposed(dox));
+    console.log(qt.isExposed("dox"));
+    console.log(qt.isExposed(doz));
 
 })(QT);

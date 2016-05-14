@@ -73,6 +73,13 @@
         return value;
     }
 
+    function listenerExist(listenerName) {
+        for (var i = 0; i < listeners.length; i++) {
+            if (listeners[i].name === listenerName) return true;
+        }
+        return false;
+    };
+
     function addListener(name, func) {
         if (typeof (name) !== "string" || name.length < 1 || typeof (func) !== "function") {
             qt.logError(qt.resources.unexposable);
@@ -218,12 +225,28 @@
         return arguments;
     };
 
-    qt.listExposed = function() {
+    qt.listExposed = function(listFunctions) {
         qt.logInternal("Listing Exposed functions");
         for (var i = 0; i < listeners.length; i++) {
-            qt.logInternal(listeners[i].name);
+            if (listFunctions) {
+                qt.logInternal("Listener " + listeners[i].name, listeners[i].func);
+            } else {
+                qt.logInternal("+++ " + listeners[i].name);
+            }
         }
     };
+
+    qt.isExposed = function(func) {
+        if (typeof (func) === "function") {
+            return listenerExist(func.name);
+        } else if (typeof (func) === "string") {
+            return listenerExist(func);
+        } else {
+            qt.logError(qt.resources.invalidSyntax + "isExposed()");
+            return false;
+        }
+    };
+
     //#endregion
 
     qt.logInternal(qt.resources.coreInitialized, qt.config);
