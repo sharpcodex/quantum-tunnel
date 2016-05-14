@@ -79,7 +79,10 @@
 
     $.each(qTag.get(0).attributes, function (i, attrib) {
         try {
-            qt.config[getCamelCase(attrib.name)] = parseAttribute(attrib.value);
+            var key = getCamelCase(attrib.name);
+            var value = parseAttribute(attrib.value);
+            qt.logInternal("setting attr config : " + key + " = " + value);
+            qt.config[key] = value;
         } catch (e) {
             qt.logError("setting attributes configs" + e);
         }
