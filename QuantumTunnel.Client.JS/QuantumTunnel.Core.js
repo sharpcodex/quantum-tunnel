@@ -187,17 +187,15 @@
     };
 
     qt.unExpose = function() {
-        for (var i = 0; i < arguments.length; i++) {
-            if (typeof (arguments[i]) === "function") {
-                removeListener(arguments[i].name);
-            } else if (typeof (arguments[i]) === "string") {
-                removeListener(arguments[i]);
-            } else if (Object.prototype.toString.call(arguments[i]) === "[object Object]") {
-                Object.getOwnPropertyNames(arguments[i]).forEach(function(name) {
-                    removeListener(name);
-                });
-            } else if (Object.prototype.toString.call(arguments[i]) === "[object Array]") {
-                x.forEach(function(element) {
+        for (var paramIndex = 0; paramIndex < arguments.length; paramIndex++) {
+            var param = arguments[paramIndex];
+            if (typeof (param) === "function") {
+                removeListener(param.name);
+            } else if (typeof (param) === "string") {
+                removeListener(param);
+            } else if (Object.prototype.toString.call(param) === "[object Array]") {
+                for (var elementIndex = 0; elementIndex < param.length; elementIndex++) {
+                    var element = param[elementIndex];
                     if (typeof (element) === "function") {
                         removeListener(element.name);
                     } else if (typeof (element) === "string") {
@@ -205,7 +203,13 @@
                     } else {
                         qt.logError(qt.resources.invalidSyntax + "unExpose()");
                     }
-                });
+                }
+            } else if (Object.prototype.toString.call(param) === "[object Object]") {
+                var objProps = Object.getOwnPropertyNames(param);
+                for (var propIndex = 0; propIndex < objProps.length; propIndex++) {
+                    var propName = objProps[propIndex];
+                    removeListener(propName);
+                }
             } else {
                 qt.logError(qt.resources.invalidSyntax + "unExpose()");
             }
