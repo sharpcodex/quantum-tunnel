@@ -1,5 +1,30 @@
 ﻿var QT = (function (qt) {
 
+    //#region Dependencies check
+
+    function printMessage(msg) {
+        if (console && console.log) {
+            console.log("QT : ", msg);
+        } else {
+            alert("QT info : ", msg);
+        }
+    };
+
+    function printError(err) {
+        if (console && console.error()) {
+            console.error("QT : ", err);
+        } else {
+            alert("QT error : ", err);
+        }
+    };
+
+    if (!window.jQuery) {
+        printError("Cannot start Quantum tunnel because jquery is not loaded");
+        return qt;
+    }
+
+    //#endregion
+
     //#region init
 
     var qTag = $("script[quantum-tunnel]");
@@ -18,22 +43,6 @@
         if (!isNaN(value)) return parseFloat(value);
         return value;
     }
-
-    function printMessage(msg) {
-        if (console && console.log) {
-            console.log("QT : ", msg);
-        } else {
-            alert("QT info : ", msg);
-        }
-    };
-
-    function printError(err) {
-        if (console && console.error()) {
-            console.error("QT : ", err);
-        } else {
-            alert("QT error : ", err);
-        }
-    };
 
     //#endregion
 
