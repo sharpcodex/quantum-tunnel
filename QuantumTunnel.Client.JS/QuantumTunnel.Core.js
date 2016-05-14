@@ -1,8 +1,10 @@
 ﻿var QT = (function (qt) {
 
-    //#region Dependencies check
+    //#region resources
 
     qt.resources = {
+        name: "Quantum Tunnel",
+        shortName: "qt",
         nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file."
     };
 
@@ -10,16 +12,34 @@
 
     //#region Dependencies check
 
-    function printMessage(msg) {
-        if (console && console.log) {
-            console.log("QT : ", msg);
-        } else {
-            alert("QT info : ", msg);
+    function printMessage(isInfo, msg, data) {
+        msg = qt.resources.name + " : " + msg;
+        if (typeof (window.console) === "undefined") return;
+
+        if (window.console.debug && isInfo) {
+            if (data) {
+                window.console.debug(msg, data);
+            } else {
+                window.console.debug(msg);
+            }
+        } else if (window.console.error && !isInfo) {
+            if (data) {
+                window.console.error(msg, data);
+            } else {
+                window.console.error(msg);
+            }
+        } else if (window.console.log) {
+            if (data) {
+                window.console.log(msg, data);
+            } else {
+                window.console.log(msg);
+            }
         }
     };
 
     if (typeof ($) !== "function") {
-        throw new Error(qt.resources.nojQuery);
+        printMessage(false, qt.resources.nojQuery);
+        return qt;
     }
 
     //#endregion
@@ -47,24 +67,24 @@
 
     //#region public helpers
 
-    qt.logConnection = function (msg) {
-        if (qt.config.logConnectionEvents) printMessage(msg);
+    qt.logConnection = function (msg, data) {
+        if (qt.config.logConnectionEvents) printMessage(true, msg, data);
     };
 
-    qt.logInternal = function (msg) {
-        if (qt.config.logInternalEvents) printMessage(msg);
+    qt.logInternal = function (msg, data) {
+        if (qt.config.logInternalEvents) printMessage(true, msg, data);
     };
 
-    qt.logBroadcasting = function (msg) {
-        if (qt.config.logBroadcastingEvents) printMessage(msg);
+    qt.logBroadcasting = function (msg, data) {
+        if (qt.config.logBroadcastingEvents) printMessage(true, msg, data);
     };
 
-    qt.logListening = function (msg) {
-        if (qt.config.logListeningEvents) printMessage(msg);
+    qt.logListening = function (msg, data) {
+        if (qt.config.logListeningEvents) printMessage(true, msg, data);
     };
 
-    qt.logError = function (err) {
-        if (qt.config.logErrors) printError(err);
+    qt.logError = function (err, data) {
+        if (qt.config.logErrors) printMessage(false, err, data);
     };
 
     //#endregion
@@ -98,8 +118,6 @@
 
     //#endregion
 
-    qt.logInternal("QT Core initialized!");
-    qt.logInternal(qt.config);
-
+    qt.logInternal("QT Core initialized with configs", qt.config);
     return qt;
 }(QT || {}));
