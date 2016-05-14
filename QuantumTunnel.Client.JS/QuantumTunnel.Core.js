@@ -1,6 +1,13 @@
 ﻿var QT = (function (qt) {
 
     //#region Dependencies check
+    qt.resources = {
+        nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file."
+    };
+
+    //#endregion
+
+    //#region Dependencies check
 
     function printMessage(msg) {
         if (console && console.log) {
