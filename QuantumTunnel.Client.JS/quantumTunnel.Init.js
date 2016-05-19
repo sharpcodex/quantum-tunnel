@@ -14,6 +14,7 @@ var QT = (function (qt) {
         shortName: "qt",
         nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file.",
         coreInitialized: "QT Core initialized with configs ",
+        listenersInitialized: "QT listeners initialized ",
         settingAttrConfig: "setting attr config  ",
         invalidSyntax: "Invalid syntax when calling ",
         unexposable: "QT can only expose named functions",

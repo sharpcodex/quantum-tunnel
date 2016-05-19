@@ -1,6 +1,6 @@
 ﻿//================================================
 // System Name : Quantum Tunnel
-// Program/Module Name : Init
+// Program/Module Name : Broadcasters
 // Created by : sharpcodex , sharpcodex@gmail.com
 //================================================
 

@@ -1,0 +1,10 @@
+[
+  {
+    "outputFileName": "../Build/quantumTunnel.Core.js",
+    "inputFiles": [
+      "quantumTunnel.Init.js",
+      "quantumTunnel.Listeners.js",
+      "quantumTunnel.Broadcasters.js"
+    ]
+  }
+]
