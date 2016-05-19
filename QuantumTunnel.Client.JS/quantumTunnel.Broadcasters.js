@@ -5,6 +5,11 @@
 //================================================
 
 var QT = (function (qt) {
-    qt.logInternal("QT SignalR initialized!");
+    "use strict";
+
+    //#region init
+
+    //#endregion
+
     return qt;
 }(QT || {}));
