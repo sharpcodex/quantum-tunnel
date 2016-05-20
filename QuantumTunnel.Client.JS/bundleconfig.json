@@ -8,9 +8,14 @@
       "quantumTunnel.Config.js",
       "quantumTunnel.Listeners.js",
       "quantumTunnel.Broadcasters.js",
-
       "quantumTunnel.Debugger.js",
       "quantumTunnel.Starter.js"
+    ]
+  },
+  {
+    "outputFileName": "../QuantumTunnel.SampleProject/quantumTunnel.SignalR.js",
+    "inputFiles": [
+      "quantumTunnel.SignalR.js"
     ]
   }
 ]
