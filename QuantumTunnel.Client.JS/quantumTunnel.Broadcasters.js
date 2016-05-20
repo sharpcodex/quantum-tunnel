@@ -1,7 +1,6 @@
 ﻿//================================================
-// System Name : Quantum Tunnel
-// Program/Module Name : Broadcasters
-// Created by : sharpcodex , sharpcodex@gmail.com
+// quantumTunnel.Broadcasters
+// sharpcodex , sharpcodex@gmail.com
 //================================================
 
 var QT = (function (qt) {

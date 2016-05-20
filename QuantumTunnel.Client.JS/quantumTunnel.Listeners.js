@@ -1,7 +1,6 @@
 ﻿//================================================
-// System Name : Quantum Tunnel
-// Program/Module Name : Listeners
-// Created by : sharpcodex , sharpcodex@gmail.com
+// quantumTunnel.Listeners
+// sharpcodex , sharpcodex@gmail.com
 //================================================
 
 var QT = (function (qt) {

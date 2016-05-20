@@ -2,6 +2,7 @@
   {
     "outputFileName": "../Build/quantumTunnel.Core.js",
     "inputFiles": [
+      "quantumTunnel.Resources.js",
       "quantumTunnel.Init.js",
       "quantumTunnel.Listeners.js",
       "quantumTunnel.Broadcasters.js"

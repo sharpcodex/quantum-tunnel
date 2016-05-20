@@ -1,7 +1,6 @@
 ﻿//================================================
-// System Name : Quantum Tunnel
-// Program/Module Name : Init
-// Created by : sharpcodex , sharpcodex@gmail.com
+// quantumTunnel.SingalR
+// sharpcodex , sharpcodex@gmail.com
 //================================================
 
 var QT = (function (qt) {
