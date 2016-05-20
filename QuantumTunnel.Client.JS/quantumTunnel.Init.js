@@ -13,6 +13,7 @@ var QT = (function (qt) {
         name: "Quantum Tunnel",
         shortName: "qt",
         nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file.",
+        noSignalR: "SignalR was not found. Please ensure SignalR is referenced before the QuantumTunnel.signalR.js file.",
         coreInitialized: "QT Core initialized with configs ",
         listenersInitialized: "QT listeners initialized ",
         settingAttrConfig: "setting attr config  ",
@@ -132,7 +133,7 @@ var QT = (function (qt) {
         }
     });
 
-    //#endregion
+    //#endregion 
 
     qt.logInternal(qt.resources.coreInitialized, qt.config);
     return qt;
