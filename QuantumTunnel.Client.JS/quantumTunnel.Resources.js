@@ -19,5 +19,6 @@ var QT = (function (qt) {
         exposed: "Function exposed successfully : ",
         unExposed: "Function unExposed successfully : "
     };
+
     return qt;
 }(QT || {}));

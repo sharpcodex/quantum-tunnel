@@ -1,14 +1,16 @@
 ﻿//================================================
-// quantumTunnel.Broadcasters
+// quantumTunnel.Starter
 // sharpcodex , sharpcodex@gmail.com
 //================================================
 
-var QT = (function (qt) {
+(function (qt) {
     "use strict";
 
-    //#region init
+        //#region Config
 
+    var qTag = $("script[quantum-tunnel]");
+    qt.configReader(qt.config,qTag);
     //#endregion
 
     return qt;
-}(QT || {}));
+}(QT));

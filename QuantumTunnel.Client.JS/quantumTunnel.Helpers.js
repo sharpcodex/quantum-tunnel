@@ -1,12 +1,12 @@
 ﻿//================================================
-// quantumTunnel.Init
+// quantumTunnel.Helpers
 // sharpcodex , sharpcodex@gmail.com
 //================================================
 
-var QT = (function (qt) {
+var QT = (function(qt) {
     "use strict";
 
-    //#region Dependencies check
+    //#region private helpers
 
     function printMessage(isInfo, msg, data) {
         msg = qt.resources.name + " : " + msg;
@@ -33,21 +33,6 @@ var QT = (function (qt) {
         }
     };
 
-    if (typeof ($) !== "function") {
-        printMessage(false, qt.resources.nojQuery);
-        return qt;
-    }
-
-    //#endregion
-
-    //#region init
-
-    var qTag = $("script[quantum-tunnel]");
-
-    //#endregion
-
-    //#region private helpers
-
     function getCamelCase(str) {
         return str.replace(/-([a-z])/g, function(g) { return g[1].toUpperCase(); });
     }
@@ -61,7 +46,7 @@ var QT = (function (qt) {
 
     //#endregion
 
-    //#region public helpers
+    //#region public log helpers
 
     qt.logConnection = function(msg, data) {
         if (qt.config.logConnectionEvents) printMessage(true, msg, data);
@@ -85,39 +70,23 @@ var QT = (function (qt) {
 
     //#endregion
 
-    //#region default config
+    //#region public helpers
 
-    qt.config = {
-        //log
-        logErrors: true,
-        logConnectionEvents: true,
-        logInternalEvents: true,
-        logBroadcastingEvents: true,
-        logListeningEvents: true,
-
-        //backend
-        tunnelPath: "/qt",
-
-        init: true
+    qt.configReader = function (configObject, htmlTag) {
+        htmlTag = $(htmlTag);
+        $.each(htmlTag.get(0).attributes, function (i, attrib) {
+            try {
+                var key = getCamelCase(attrib.name);
+                var value = parseAttribute(attrib.value);
+                configObject[key] = value;
+                qt.logInternal(qt.resources.settingAttrConfig + key + " = " + value);
+            } catch (e) {
+                qt.logError(qt.resources.settingAttrConfig + e);
+            }
+        });
     };
-
-    //#endregion
-
-    //#region config setters
-
-    $.each(qTag.get(0).attributes, function(i, attrib) {
-        try {
-            var key = getCamelCase(attrib.name);
-            var value = parseAttribute(attrib.value);
-            qt.logInternal(qt.resources.settingAttrConfig + key + " = " + value);
-            qt.config[key] = value;
-        } catch (e) {
-            qt.logError(qt.resources.settingAttrConfig + e);
-        }
-    });
 
     //#endregion 
 
-    qt.logInternal(qt.resources.moduleInitialized + "Core", qt.config);
     return qt;
 }(QT || {}));

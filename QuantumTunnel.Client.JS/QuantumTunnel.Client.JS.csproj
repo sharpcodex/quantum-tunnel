@@ -66,19 +66,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Build\quantumTunnel.Core.js" />
-    <Content Include="..\Build\quantumTunnel.Core.min.js">
+    <Content Include="..\QuantumTunnel.SampleProject\quantumTunnel.Core.js" />
+    <Content Include="..\QuantumTunnel.SampleProject\quantumTunnel.Core.min.js">
       <DependentUpon>quantumTunnel.Core.js</DependentUpon>
     </Content>
+    <Content Include="dependencies.js" />
     <Content Include="packages.config" />
     <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="quantumTunnel.Broadcasters.js" />
     <Content Include="quantumTunnel.Debugger.js" />
+    <Content Include="quantumTunnel.Config.js" />
+    <Content Include="quantumTunnel.Starter.js" />
     <Content Include="quantumTunnel.Resources.js" />
     <Content Include="quantumTunnel.Listeners.js" />
     <Content Include="quantumTunnel.SignalR.js" />
-    <Content Include="quantumTunnel.Init.js" />
+    <Content Include="quantumTunnel.Helpers.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />

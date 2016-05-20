@@ -137,6 +137,5 @@ var QT = (function (qt) {
 
     //#endregion
 
-    qt.logInternal(qt.resources.listenersInitialized);
     return qt;
 }(QT || {}));

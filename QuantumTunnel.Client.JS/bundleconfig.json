@@ -1,11 +1,16 @@
 [
   {
-    "outputFileName": "../Build/quantumTunnel.Core.js",
+    "outputFileName": "../QuantumTunnel.SampleProject/quantumTunnel.Core.js",
     "inputFiles": [
       "quantumTunnel.Resources.js",
-      "quantumTunnel.Init.js",
+      "dependencies.js",
+      "quantumTunnel.Helpers.js",
+      "quantumTunnel.Config.js",
       "quantumTunnel.Listeners.js",
-      "quantumTunnel.Broadcasters.js"
+      "quantumTunnel.Broadcasters.js",
+
+      "quantumTunnel.Debugger.js",
+      "quantumTunnel.Starter.js"
     ]
   }
 ]
