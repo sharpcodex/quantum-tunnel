@@ -11,18 +11,16 @@ var QT = (function (qt) {
 
     qt.resources = {
         name: "Quantum Tunnel",
-        shortName: "qt",
-        nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the QuantumTunnel.Core.js file.",
-        noSignalR: "SignalR was not found. Please ensure SignalR is referenced before the QuantumTunnel.signalR.js file.",
-        coreInitialized: "QT Core initialized with configs ",
-        listenersInitialized: "QT listeners initialized ",
-        settingAttrConfig: "setting attr config  ",
+        shortName: "QT",
+        nojQuery: "JQuery was not found. Please ensure jQuery is referenced before the quantumTunnel.Core.js file.",
+        noSignalR: "SignalR was not found. Please ensure signalR is referenced before the quantumTunnel.signalR.js file.",
+        moduleInitialized: "Module initialized successfully : quantumTunnel.modules.",
+        settingAttrConfig: "Setting attribute configurations : ",
         invalidSyntax: "Invalid syntax when calling ",
-        unexposable: "QT can only expose named functions",
-        exposed: "function exposed successfully : ",
-        unExposed: "function unExposed successfully : ",
-        unExposeInvalidParams: "Calling unExpose() with invalid parameters",
-        unExposeUnExposed: "Can not unExpose an already unExposed function"
+        invalidParams: "Invalid parameters when calling ",
+        unexposable: "Cann't expose unnamed functions",
+        exposed: "Function exposed successfully : ",
+        unExposed: "Function unExposed successfully : "
     };
 
     //#endregion
@@ -135,6 +133,6 @@ var QT = (function (qt) {
 
     //#endregion 
 
-    qt.logInternal(qt.resources.coreInitialized, qt.config);
+    qt.logInternal(qt.resources.moduleInitialized + "Core", qt.config);
     return qt;
 }(QT || {}));

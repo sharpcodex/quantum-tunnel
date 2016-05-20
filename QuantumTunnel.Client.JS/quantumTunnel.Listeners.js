@@ -38,7 +38,7 @@ var QT = (function (qt) {
             });
             qt.logInternal(qt.resources.unExposed + name);
         } else {
-            qt.logError(qt.resources.unExposeInvalidParams);
+            qt.logError(qt.resources.invalidParams + "unExpose()");
         }
     }
 
