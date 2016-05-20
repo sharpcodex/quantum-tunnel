@@ -13,6 +13,8 @@ var QT = (function (qt) {
     }
 
     //#endregion
+
+
     qt.logInternal("QT SignalR initialized!");
     return qt;
 }(QT || {}));

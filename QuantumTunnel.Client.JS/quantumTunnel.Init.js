@@ -88,11 +88,15 @@ var QT = (function (qt) {
     //#region default config
 
     qt.config = {
+        //log
         logErrors: true,
         logConnectionEvents: true,
         logInternalEvents: true,
         logBroadcastingEvents: true,
         logListeningEvents: true,
+
+        //backend
+        tunnelPath: "/qt",
 
         init: true
     };

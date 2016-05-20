@@ -90,6 +90,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
