@@ -1,5 +1,5 @@
 ﻿//================================================
-// quantumTunnel.resources
+// quantumTunnel.Resources
 // sharpcodex , sharpcodex@gmail.com
 //================================================
 

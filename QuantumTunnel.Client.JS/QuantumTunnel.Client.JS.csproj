@@ -74,6 +74,7 @@
     <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="quantumTunnel.Broadcasters.js" />
+    <Content Include="quantumTunnel.Debugger.js" />
     <Content Include="quantumTunnel.Resources.js" />
     <Content Include="quantumTunnel.Listeners.js" />
     <Content Include="quantumTunnel.SignalR.js" />
