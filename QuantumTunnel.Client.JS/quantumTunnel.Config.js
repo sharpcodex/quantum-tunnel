@@ -12,6 +12,7 @@ var QT = (function (qt) {
         //log
         logErrors: true,
         logConnectionEvents: true,
+        logLowLevelConnectionEvents: true,
         logInternalEvents: true,
         logBroadcastingEvents: true,
         logListeningEvents: true,
