@@ -32,7 +32,7 @@ var QT = (function (qt) {
 
     function removeListener(name) {
         if (typeof (name) === "string") {
-            listeners = listeners.filter(function(el) {
+            listeners = listeners.filter(function (el) {
                 return el.name !== name;
             });
             qt.logInternal(qt.resources.unExposed + name);
@@ -43,9 +43,9 @@ var QT = (function (qt) {
 
     //#endregion
 
-    //#region listeners
+    //#region exposeers
 
-    qt.expose = function(x, y, z) {
+    qt.expose = function (x, y, z) {
         if (typeof (x) === "string" && typeof (y) === "function" && typeof (z) === "undefined") {
             addListener(x, y);
         } else {
@@ -81,7 +81,7 @@ var QT = (function (qt) {
         return arguments;
     };
 
-    qt.unExpose = function() {
+    qt.unExpose = function () {
         for (var paramIndex = 0; paramIndex < arguments.length; paramIndex++) {
             var param = arguments[paramIndex];
             if (typeof (param) === "function") {
@@ -113,7 +113,7 @@ var QT = (function (qt) {
         return arguments;
     };
 
-    qt.listExposed = function(listFunctions) {
+    qt.listExposed = function (listFunctions) {
         qt.logInternal("Listing Exposed functions");
         for (var i = 0; i < listeners.length; i++) {
             if (listFunctions) {
@@ -124,7 +124,7 @@ var QT = (function (qt) {
         }
     };
 
-    qt.isExposed = function(func) {
+    qt.isExposed = function (func) {
         if (typeof (func) === "function") {
             return listenerExist(func.name);
         } else if (typeof (func) === "string") {
@@ -133,6 +133,14 @@ var QT = (function (qt) {
             qt.logError(qt.resources.invalidSyntax + "isExposed()");
             return false;
         }
+    };
+
+    //#endregion
+
+    //#region executors
+
+    qt.executeListener = function (listener) {
+        qt.logListening("Executing listener : ");
     };
 
     //#endregion

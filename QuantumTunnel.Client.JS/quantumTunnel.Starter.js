@@ -3,14 +3,24 @@
 // sharpcodex , sharpcodex@gmail.com
 //================================================
 
+
+var QT = (function (qt) {
+    "use strict";
+
+    qt.start = function () {
+        qt.rtc.start();
+    };
+
+    return qt;
+}(QT || {}));
+
 (function (qt) {
     "use strict";
 
-        //#region Config
+    $(function () {
+        if (qt.config.autoStart) {
+            qt.start();
+        }
+    });
 
-    var qTag = $("script[quantum-tunnel]");
-    qt.configReader(qt.config,qTag);
-    //#endregion
-
-    return qt;
 }(QT));

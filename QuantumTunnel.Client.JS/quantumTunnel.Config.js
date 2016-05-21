@@ -6,6 +6,8 @@
 var QT = (function (qt) {
     "use strict";
 
+    //#region Default configurations
+
     qt.config = {
         //log
         logErrors: true,
@@ -14,11 +16,24 @@ var QT = (function (qt) {
         logBroadcastingEvents: true,
         logListeningEvents: true,
 
-        //backend
-        tunnelPath: "/qt",
-
+        //Init
+        autoStart: true,
         init: true
     };
 
+    //#endregion 
+
     return qt;
 }(QT || {}));
+
+(function (qt) {
+    "use strict";
+
+    //#region attribute configurations Reader
+
+    var qTag = $("script[quantum-tunnel]");
+    if (qTag && qt.config) qt.configReader(qt.config, qTag);
+
+    //#endregion 
+
+}(QT));

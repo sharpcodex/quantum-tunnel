@@ -66,10 +66,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\QuantumTunnel.SampleProject\quantumTunnel.Core.js" />
-    <Content Include="..\QuantumTunnel.SampleProject\quantumTunnel.Core.min.js">
-      <DependentUpon>quantumTunnel.Core.js</DependentUpon>
-    </Content>
     <Content Include="dependencies.js" />
     <Content Include="packages.config" />
     <None Include="bundleconfig.json" />
