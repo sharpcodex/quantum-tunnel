@@ -70,6 +70,7 @@
     <Content Include="packages.config" />
     <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="quantumTunnel.DataTypes.js" />
     <Content Include="quantumTunnel.Broadcasters.js" />
     <Content Include="quantumTunnel.Debugger.js" />
     <Content Include="quantumTunnel.Config.js" />

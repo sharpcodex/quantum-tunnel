@@ -4,6 +4,7 @@
     "inputFiles": [
       "quantumTunnel.Resources.js",
       "dependencies.js",
+      "quantumTunnel.DataTypes.js",
       "quantumTunnel.Helpers.js",
       "quantumTunnel.Config.js",
       "quantumTunnel.Listeners.js",
