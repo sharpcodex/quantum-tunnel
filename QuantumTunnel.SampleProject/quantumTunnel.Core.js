@@ -38,6 +38,30 @@ if (typeof ($) !== "function") {
 }
 
 //================================================
+// quantumTunnel.Broadcasters
+// sharpcodex , sharpcodex@gmail.com
+//================================================
+
+var QT = (function (qt) {
+    "use strict";
+    var types = {}
+
+    //#region quantumTunnel.Broadcasters
+
+    types.broadcastingClients = {
+        self: "self",
+        others: "others",
+        group: "group",
+        all: "all"
+    }
+
+    //#endregion
+
+    qt.dataTypes = types;
+    return qt;
+}(QT || {}));
+
+//================================================
 // quantumTunnel.Helpers
 // sharpcodex , sharpcodex@gmail.com
 //================================================
@@ -148,7 +172,8 @@ var QT = (function (qt) {
         logInternalEvents: true,
         logBroadcastingEvents: true,
         logListeningEvents: true,
-
+        //broadcasting
+        defaultBroadcastingClient : qt.dataTypes.broadcastingClients.self,
         //Init
         autoStart: true,
         init: true
@@ -329,6 +354,23 @@ var QT = (function (qt) {
     "use strict";
 
     //#region init
+
+    //#endregion
+
+    //#region Invoker
+
+    qt.module = function (moduleName) {
+        if (!moduleName) {
+            qt.logError(qt.resources.invalidParams + "module()");
+            return {};
+        }
+        
+        return {
+            clients: function (clients) { value += addend; return this; },
+            sub: function (subtra) { value -= subtra; return this; },
+            get: function () { return value; }
+        };
+    };
 
     //#endregion
 

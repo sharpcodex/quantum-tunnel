@@ -9,6 +9,7 @@ var QT = (function (qt) {
     //#region Default configurations
 
     qt.config = {
+
         //log
         logErrors: true,
         logConnectionEvents: true,
@@ -17,9 +18,16 @@ var QT = (function (qt) {
         logBroadcastingEvents: true,
         logListeningEvents: true,
 
+        //listeners
+        moduleName: "quantumTunnel",
+
+        //broadcasting
+        defaultBroadcastingClient: qt.dataTypes.broadcastingClients.self,
+
         //Init
         autoStart: true,
         init: true
+
     };
 
     //#endregion 
