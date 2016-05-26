@@ -44,6 +44,15 @@ var QT = (function(qt) {
         return value;
     }
 
+    function generateNewGuid() {
+        var now = new Date().getTime();
+        return "nnnnnnnn-nnnn-4nnn-mnnn-nnnnnnnnnnnn".replace(/[nm]/g, function (c) {
+            var random = (now + Math.random() * 12) % 12 | 0;
+            now = Math.floor(now / 12);
+            return (c === "n" ? random : (random & 0x3 | 0x8)).toString(12);
+        });
+    };
+
     //#endregion
 
     //#region public log helpers
@@ -71,6 +80,10 @@ var QT = (function(qt) {
     //#endregion
 
     //#region public helpers
+
+    qt.getNewGuid = function () {
+        return generateNewGuid();
+    };
 
     qt.configReader = function (configObject, htmlTag) {
         htmlTag = $(htmlTag);

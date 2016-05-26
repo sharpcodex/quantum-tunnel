@@ -3,7 +3,7 @@
 // sharpcodex , sharpcodex@gmail.com
 //================================================
 
-var QT = (function (qt) {
+var QT = (function(qt) {
     "use strict";
 
     //#region init
@@ -12,17 +12,26 @@ var QT = (function (qt) {
 
     //#region Invoker
 
-    qt.module = function () {
+    qt.createTunnel = function() {
         var broadcasterInfo = {};
-
+        broadcasterInfo.guid = qt.getNewGuid();
         broadcasterInfo.moduleName = qt.config.moduleName;
 
         return {
-            withParams: function () { broadcasterInfo.params = arguments; return this; },
-            clients: function (clients) { broadcasterInfo.broadcastTo = clients || qt.dataTypes.broadcastingClients.self; return this; },
-            module: function (moduleName) { broadcasterInfo.moduleName = moduleName || qt.config.moduleName; return this; },
-            done: function (callBack) { return this; },
-            failed: function (callBack) { return this; }
+            toClients: function(clients) {
+                broadcasterInfo.broadcastTo = clients || qt.dataTypes.broadcastingClients.self;
+                return this;
+            },
+            toModule: function(moduleName) {
+                broadcasterInfo.moduleName = moduleName || qt.config.moduleName;
+                return this;
+            },
+            withParams: function() {
+                broadcasterInfo.params = arguments;
+                return this;
+            },
+            callback: function(callBack) { return this; },
+            invoke: function() { return this; }
         };
     };
 

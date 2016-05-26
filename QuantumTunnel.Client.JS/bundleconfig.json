@@ -1,6 +1,6 @@
 [
   {
-    "outputFileName": "../QuantumTunnel.SampleProject/quantumTunnel.Core.js",
+    "outputFileName": "../QuantumTunnel.SamplesProject/Scripts/quantumTunnel.Core.js",
     "inputFiles": [
       "quantumTunnel.Resources.js",
       "dependencies.js",
@@ -14,7 +14,7 @@
     ]
   },
   {
-    "outputFileName": "../QuantumTunnel.SampleProject/quantumTunnel.SignalR.js",
+    "outputFileName": "../QuantumTunnel.SamplesProject/Scripts/quantumTunnel.SignalR.js",
     "inputFiles": [
       "quantumTunnel.SignalR.js"
     ]

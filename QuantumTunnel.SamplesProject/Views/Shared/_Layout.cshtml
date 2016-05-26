@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quantum-tunnel</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/Scripts/quantumTunnel.Core.js"  quantum-tunnel></script>
+    <script src="~/Scripts/quantumTunnel.SignalR.js" quantum-tunnel-rtc server-url="http://localhost:55951"></script>
+    <script src="~/Scripts/exposeTests.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
