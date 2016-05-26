@@ -373,32 +373,37 @@ var QT = (function (qt) {
 var QT = (function(qt) {
     "use strict";
 
-    //#region init
-
-    //#endregion
-
     //#region Invoker
 
-    qt.createTunnel = function() {
+    qt.createTunnel = function (moduleName) {
         var broadcasterInfo = {};
         broadcasterInfo.guid = qt.getNewGuid();
-        broadcasterInfo.moduleName = qt.config.moduleName;
+        broadcasterInfo.moduleName = moduleName || qt.config.moduleName;
+        broadcasterInfo.broadcastTo = qt.config.defaultBroadcastingClient;
+        broadcasterInfo.params = [];
 
         return {
-            toClients: function(clients) {
+            getInfo: function() {
+                return broadcasterInfo;
+            },
+            toClients: function (clients) {
                 broadcasterInfo.broadcastTo = clients || qt.dataTypes.broadcastingClients.self;
                 return this;
             },
-            toModule: function(moduleName) {
-                broadcasterInfo.moduleName = moduleName || qt.config.moduleName;
+            toModule: function(newModuleName) {
+                broadcasterInfo.moduleName = newModuleName || broadcasterInfo.moduleName;
                 return this;
             },
             withParams: function() {
                 broadcasterInfo.params = arguments;
                 return this;
             },
-            callback: function(callBack) { return this; },
-            invoke: function() { return this; }
+            callback: function(callBack) {
+                 return this;
+            },
+            invoke: function() {
+                 return this;
+            }
         };
     };
 
