@@ -73,6 +73,10 @@ var QT = (function(qt) {
         if (qt.config.logListeningEvents) printMessage(true, msg, data);
     };
 
+    qt.logInvalidSyntax = function(err, data) {
+        if (qt.config.logErrors) printMessage(false, qt.resources.invalidSyntax + err, data);
+    };
+
     qt.logError = function(err, data) {
         if (qt.config.logErrors) printMessage(false, err, data);
     };

@@ -60,7 +60,7 @@ var QT = (function (qt) {
                         if (typeof (element) === "function") {
                             addListener(element.name, element);
                         } else {
-                            qt.logError(qt.resources.invalidSyntax + "expose()");
+                            qt.logInvalidSyntax("expose()");
                         }
                     }
                 } else if (Object.prototype.toString.call(param) === "[object Object]") {
@@ -70,11 +70,11 @@ var QT = (function (qt) {
                         if (typeof (param[propName]) === "function") {
                             addListener(propName, param[propName]);
                         } else {
-                            qt.logError(qt.resources.invalidSyntax + "expose()");
+                            qt.logInvalidSyntax("expose()");
                         }
                     }
                 } else {
-                    qt.logError(qt.resources.invalidSyntax + "expose()");
+                    qt.logInvalidSyntax("expose()");
                 }
             }
         }
@@ -96,7 +96,7 @@ var QT = (function (qt) {
                     } else if (typeof (element) === "string") {
                         removeListener(element);
                     } else {
-                        qt.logError(qt.resources.invalidSyntax + "unExpose()");
+                        qt.logInvalidSyntax("unExpose()");
                     }
                 }
             } else if (Object.prototype.toString.call(param) === "[object Object]") {
@@ -106,7 +106,7 @@ var QT = (function (qt) {
                     removeListener(propName);
                 }
             } else {
-                qt.logError(qt.resources.invalidSyntax + "unExpose()");
+                qt.logInvalidSyntax("unExpose()");
             }
         }
 
@@ -130,7 +130,7 @@ var QT = (function (qt) {
         } else if (typeof (func) === "string") {
             return listenerExist(func);
         } else {
-            qt.logError(qt.resources.invalidSyntax + "isExposed()");
+            qt.logInvalidSyntax("isExposed()");
             return false;
         }
     };
