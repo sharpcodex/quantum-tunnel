@@ -3,7 +3,7 @@
 // sharpcodex , sharpcodex@gmail.com
 //================================================
 
-var QT = (function(qt) {
+var QT = (function (qt) {
     "use strict";
 
     //#region private helpers
@@ -34,7 +34,7 @@ var QT = (function(qt) {
     };
 
     function getCamelCase(str) {
-        return str.replace(/-([a-z])/g, function(g) { return g[1].toUpperCase(); });
+        return str.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
     }
 
     function parseAttribute(value) {
@@ -57,27 +57,27 @@ var QT = (function(qt) {
 
     //#region public log helpers
 
-    qt.logConnection = function(msg, data) {
+    qt.logConnection = function (msg, data) {
         if (qt.config.logConnectionEvents) printMessage(true, msg, data);
     };
 
-    qt.logInternal = function(msg, data) {
+    qt.logInternal = function (msg, data) {
         if (qt.config.logInternalEvents) printMessage(true, msg, data);
     };
 
-    qt.logBroadcasting = function(msg, data) {
+    qt.logBroadcasting = function (msg, data) {
         if (qt.config.logBroadcastingEvents) printMessage(true, msg, data);
     };
 
-    qt.logListening = function(msg, data) {
+    qt.logListening = function (msg, data) {
         if (qt.config.logListeningEvents) printMessage(true, msg, data);
     };
 
-    qt.logInvalidSyntax = function(err, data) {
+    qt.logInvalidSyntax = function (err, data) {
         if (qt.config.logErrors) printMessage(false, qt.resources.invalidSyntax + err, data);
     };
 
-    qt.logError = function(err, data) {
+    qt.logError = function (err, data) {
         if (qt.config.logErrors) printMessage(false, err, data);
     };
 
@@ -87,6 +87,10 @@ var QT = (function(qt) {
 
     qt.getNewGuid = function () {
         return generateNewGuid();
+    };
+
+    qt.buildTunnelInfoString = function (tunnel) {
+        return tunnel.clients + "." + tunnel.moduleName + "." + tunnel.methodName + " ";
     };
 
     qt.configReader = function (configObject, htmlTag) {
