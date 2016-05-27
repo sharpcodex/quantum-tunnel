@@ -5,11 +5,10 @@
 
 var QT = (function (qt) {
     "use strict";
-    var types = {}
 
     //#region quantumTunnel.Broadcasters
 
-    types.broadcastingClients = {
+    qt.broadcastingClients = {
         self: "self",
         others: "others",
         group: "group",
@@ -18,6 +17,5 @@ var QT = (function (qt) {
 
     //#endregion
 
-    qt.dataTypes = types;
     return qt;
 }(QT || {}));
